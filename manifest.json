@@ -1,0 +1,25 @@
+{
+
+  "manifest_version": 2,
+  "name": "Wikipedia Search",
+  "version": "1.0",
+
+  "description": "Wiki API Test",
+  
+  "permissions": [
+    "contextMenus",
+    "activeTab"
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+  
+  "content_scripts": [
+    {
+	  "matches": ["*://*/*"],
+	  "js": ["main.js"]
+    }
+  ]
+
+}
