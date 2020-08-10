@@ -1,5 +1,4 @@
 var url = "https://en.wikipedia.org/w/api.php"; 
-var testVar = '';
 
 var params = {
     action: "query",
@@ -15,7 +14,7 @@ var params = {
 url = url + "?origin=*";
 
 function getSelectedText() {
-    let text = '';
+    var text = '';
     if(window.getSelection) {
         text = window.getSelection().toString();
     }
@@ -28,25 +27,29 @@ async function getWikiResponse(url) {
     return jsonResponse;
 }
 
-function searchWikipedia() {
+function extractSnippet(result) {
+    var pageID = result.query.pageids[0];
+    var snippet = result.query.pages[pageID].extract;
+    return snippet;
+}
+
+function sendArticleIntro(articleIntro) {
+    chrome.runtime.sendMessage({from: "main", message: articleIntro});
+}
+
+function fetchResult() {
     selectedText = getSelectedText();
-    var jsonData = '';
     if(selectedText) {
         selectedText = selectedText.trimStart();
         selectedText = selectedText.trimEnd();
         params.titles = selectedText; // TODO: sanitize input (replace spaces with %20)
         Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
         getWikiResponse(url).then(function(result) {
-            printSnippet(result);
+            let articleIntro = extractSnippet(result);
+            sendArticleIntro(articleIntro);
         });
     }
 }
 
-function printSnippet(result) {
-    var pageID = result.query.pageids[0];
-    var snippet = result.query.pages[pageID].extract;
-    console.log(snippet);
-}
-
-searchWikipedia();
+fetchResult();
 
