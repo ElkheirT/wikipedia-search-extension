@@ -1,52 +1,60 @@
 chrome.runtime.sendMessage({from:"draw"});
-var scriptsLoaded = false;
 
+var windowDiv = null;
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-    if(scriptsLoaded) {
         drawWindow(message.message);
+        console.log('Drawing');
+});
+
+document.addEventListener('click', function(event) {
+    var infoWindow = document.getElementById('wiki-ext');
+    if(infoWindow) {
+        var isClickedInside = infoWindow.contains(event.target);
+        if(!isClickedInside) {
+            infoWindow.parentNode.removeChild(infoWindow);
+        }
     }
 });
 
-loadRes( chrome.extension.getURL("web-components-lite.js") ) // You may/may not need webcomponents.js here
-.then( loadRes( chrome.extension.getURL("InfoWindow.js") ) )
-.then(function() {
-    scriptsLoaded = true;
-});
-
-
-document.onclick = function() {
-    var toRemove = document.getElementById('wiki-ext');
-    if(toRemove) {
-        toRemove.parentNode.removeChild(toRemove);
-    }   
-}
-
-function loadRes(res) {
-    return new Promise(
-      function(resolve, reject) {
-        var link = document.createElement('script');
-        link.setAttribute('src', res);
-        link.onload = function() {
-          resolve(res);
-        };
-        document.head.appendChild(link);
-    });
-}
-
-
 function drawWindow(innerText) {
-    var infoWindow = document.createElement('info-window');
+    var infoWindow = document.createElement('div');
     infoWindow.setAttribute('id','wiki-ext');
-    var headingElem = document.createElement('div');
-    headingElem.setAttribute('slot', 'heading')
-    headingElem.innerHTML = 'Heading'; // TODO: Change to actual heading from API
+    infoWindow.innerHTML = `
+    <style>
+    #wiki-container {
+        all: inital;
+        width: 400px;
+        height: 200px;
+        background-color: white;
+        color: black;
+        box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+        overflow: scroll;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 2147483648;
+        scrollbar-width: none;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
 
-    var pageText = document.createElement('div');
-    pageText.setAttribute('slot', 'text')
-    pageText.innerHTML = innerText;
-    infoWindow.appendChild(headingElem);
-    infoWindow.appendChild(pageText);
+    h1 {
+        margin-bottom: 5px;
+    }
+
+    p {
+        line-height: 1.5;
+    }
+    </style>
+
+    <div id="wiki-container">
+        <h1>Header</h1>
+        <hr>
+        <p>${innerText}</p>
+    </div>
+    `;
 
     document.body.appendChild(infoWindow);
 }

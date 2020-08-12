@@ -9,10 +9,10 @@ chrome.contextMenus.onClicked.addListener(function(info, tab){
 
 var drawScriptID;
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-    if(message.from === "draw") {
-        drawScriptID = sender.tab.id;
+    if(message.popupOpen) {
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, {message : "fetch"});
+          });
     }
-    if (message.from === "main") {
-        chrome.tabs.sendMessage(drawScriptID, message);
-    }
+    
 });

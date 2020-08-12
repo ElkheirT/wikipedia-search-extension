@@ -1,4 +1,14 @@
-var url = "https://en.wikipedia.org/w/api.php"; 
+chrome.runtime.onMessage.addListener (
+    function(request, sender, sendResponse) {
+        if(request.message === "fetch") {
+            let result = fetchResult();
+            sendResponse(result);
+        }
+        
+    }
+);
+
+var url = "https://en.wikipedia.org/w/api.php?origin=*"; 
 
 var params = {
     action: "query",
@@ -10,8 +20,6 @@ var params = {
     format: "json",
     titles: "",
 }
-
-url = url + "?origin=*";
 
 function getSelectedText() {
     var text = '';
@@ -46,10 +54,12 @@ function fetchResult() {
         Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
         getWikiResponse(url).then(function(result) {
             let articleIntro = extractSnippet(result);
-            sendArticleIntro(articleIntro);
+            return articleIntro;
         });
+    }
+    else {
+        return '';
     }
 }
 
-fetchResult();
 

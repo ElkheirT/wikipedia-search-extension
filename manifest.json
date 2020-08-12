@@ -15,17 +15,28 @@
     "scripts": ["background.js"]
   },
 
-  "web_accessible_resources": [
-    "web-components-lite.js",
-    "InfoWindow.js"
-  ],
-  
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "Search Wikipedia"
+  },
+
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "linux": "Ctrl+Shift+K",
+        "windows": "Alt+Shift+P",
+        "mac": "Alt+Shift+P"
+      }
+    }
+  },
+
   "content_scripts": [
     {
 	  "matches": ["*://*/*"],
     "js": [
-      "main.js",
-      "draw.js"
+      "main.js"
     ]
     }
   ]
