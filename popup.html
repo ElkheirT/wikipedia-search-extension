@@ -4,22 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }   
+      #wiki-container {
+          width: 400px;
+          height: 200px;
+          background-color: white;
+          color: black;
+          overflow: scroll;
+          padding: 5px;
+      }
+    </style>
 </head>
 <body>
-    <p></p>
+    <div id="wiki-container">
+      <h1 id="main-heading"></h1>
+      <p id="main-text"></p>
+    </div>
+    
 </body>
   <script src="popup.js"></script>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8" />
-</head>
-<body>
-  <div id="data"></div>
-  <input type="text" id="text"></input>
-  <button id="set">Set</button>
-  <script src="popup.js"></script>
-</body>
-</html> -->
