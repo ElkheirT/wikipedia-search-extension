@@ -4,15 +4,6 @@
           if the page does not exist
 */
 
-params.titles = text.msg;
-Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
-getWikiResponse(url).then(function(result) {
-    let articleIntro = extractSnippet(result);
-    displayText(text.msg, articleIntro);
-});
-
-
-
 var url = "https://en.wikipedia.org/w/api.php?origin=*"; 
 
 var params = {
@@ -38,6 +29,11 @@ function extractSnippet(result) {
     return snippet;
 }
 
-function fetchArticle() {
-    
+function fetchArticle(pageTitle) {
+    params.titles = pageTitle;
+    Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+    var response = getWikiResponse(url);
+    return response;
 }
+
+export { fetchArticle, extractSnippet }
