@@ -3,37 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
     <title>Document</title>
-    <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    #container {
-        width: 500px;
-        height: 300px;
-        background-color: white;
-        color: black;
-        overflow: scroll;
-        padding: 15px;
-    }
-      
-    #main-heading {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    #main-text {
-      white-space: pre-wrap;
-      margin-top: 10px;
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    </style>
 </head>
 <body>
     <div id="container">
@@ -41,7 +12,7 @@
       <hr>
       <p id="main-text"></p>
     </div>
-    
 </body>
-  <script src="popup.js"></script>
+  <script type="module" src="popup.js"></script>
+  <script type="module" src="fetchinfo.js"></script>
 </html>
