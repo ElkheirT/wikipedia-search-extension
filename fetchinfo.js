@@ -1,20 +1,26 @@
 /*
     Communicates with the Wikipedia API
         - Returns snippet from Wikipedia page with a given title or related links
-          if the page does not exist
-*/
 
+        findPage() - 
+        searchWiki() - 
+*/
 var url = "https://en.wikipedia.org/w/api.php?origin=*"; 
 
-var params = {
+// https://en.wikipedia.org/w/api.php?origin=*&action=query&generator=search&prop=extracts&gsrsearch=domain&exintro&explaintext&exlimit=10&format=json
+var findPageParameters = {
     action: "query",
     indexpageids: "",
-    prop: "extracts",
+    prop: "extracts|categories",
     exintro: "",
     explaintext: "",
     redirects: "1",
     format: "json",
     titles: "",
+}
+
+var searchWikiParameters = {
+
 }
 
 async function getWikiResponse(url) {
@@ -23,17 +29,15 @@ async function getWikiResponse(url) {
     return jsonResponse;
 }
 
-function extractSnippet(result) {
-    var pageID = result.query.pageids[0];
-    var snippet = result.query.pages[pageID].extract;
-    return snippet;
-}
-
 function fetchArticle(pageTitle) {
-    params.titles = pageTitle;
-    Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+    findPageParameters.titles = pageTitle;
+    Object.keys(findPageParameters).forEach(function(key){url += "&" + key + "=" + findPageParameters[key];});
     var response = getWikiResponse(url);
     return response;
 }
 
-export { fetchArticle, extractSnippet }
+function fetchSearchResults(searchTerm) {
+
+}
+
+export { fetchArticle, fetchSearchResults }
