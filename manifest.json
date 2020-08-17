@@ -30,7 +30,7 @@
     {
 	  "matches": ["*://*/*"],
     "js": [
-      "contentscript.js"
+      "js/contentscript.js"
     ]
     }
   ]

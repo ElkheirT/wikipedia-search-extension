@@ -22,7 +22,6 @@ function getSelectedText() {
 }
 
 function sanitizeInput(selectedText) {
-    selectedText = selectedText.trimStart();
-    selectedText = selectedText.trimEnd();
+    selectedText = selectedText.trim();
     return selectedText;
 }
