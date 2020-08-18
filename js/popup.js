@@ -5,7 +5,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         if (!(text.msg === '')) {
             getSearchResults(text.msg).then(function (result) {
                 var data = getSearchResultsData(result)
-                alert(data[0].text)
+                renderTemplate(data)
             })
         } else {
             displayArticleText('Error', 'No text selected.')
@@ -20,4 +20,10 @@ function displayArticleText (heading, text) {
     paragraphElem.innerText = text
     var headingElem = document.getElementById('main-heading')
     headingElem.innerText = heading
+}
+
+function renderTemplate (data) {
+    var template = Handlebars.compile(document.getElementById('template').innerHTML)
+    var container = document.getElementById('container')
+    container.innerHTML = template(data)
 }

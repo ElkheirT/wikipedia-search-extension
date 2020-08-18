@@ -14,15 +14,25 @@ function getAPIURL (parameters) {
     return url
 }
 
+function sortResults (data) {
+    data.sort(function (a, b) {
+        return a.index.localeCompare(b.index)
+    })
+    return data
+}
+
 function getSearchResultsData (response) {
     var pageIDs = response.query.pageids
     var pages = response.query.pages
-    var searchData = {}
+    var searchData = {search: []}
     for (var i = 0; i < pageIDs.length; i++) {
-        searchData[i] = {
-            index: pages[pageIDs[i]].index,
-            title: pages[pageIDs[i]].title,
-            text: pages[pageIDs[i]].extract
+        if(!pages[pageIDs[i]].hasOwnProperty('pageprops')) {
+            var currentPage = {
+                index: pages[pageIDs[i]].index,
+                title: pages[pageIDs[i]].title,
+                text: pages[pageIDs[i]].extract
+            }
+            searchData.search.push(currentPage)
         }
     }
     return searchData
@@ -35,7 +45,8 @@ function getSearchResults (searchTerm) {
         format: 'json',
         generator: 'search',
         gsrlimit: '10',
-        prop: 'extracts',
+        prop: 'extracts|pageprops',
+        ppprop: 'disambiguation',
         exintro: '',
         explaintext: '',
         exlimit: 'max',
@@ -44,7 +55,6 @@ function getSearchResults (searchTerm) {
     }
     searchParameters.gsrsearch += searchTerm
     var url = getAPIURL(searchParameters)
-    alert(url)
     var response = getAPIResponse(url) 
     return response
 }
