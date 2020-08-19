@@ -5,13 +5,12 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#container {
-    width: 500px;
-    height: 300px;
+main {
+    width: 700px;
+    height: 500px;
     background-color: white;
     color: black;
-    overflow: scroll;
-    padding: 15px;
+    margin: 20px;
 }
   
 #main-heading {
@@ -19,9 +18,48 @@
   margin-bottom: 10px;
 }
 
-p {
+#searchbar-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+#searchbar {
+  height: 70%;
+  margin-right: 10px;
+}
+
+#searchbar[type="search"] {
+  font-size: 16px;
+  padding: 10px;
+}
+
+#search-btn {
+  height: 70%;
+  width: 75px;
+  font-size: 16px;
+}
+
+details {
+  margin: 10px 0;
+}
+
+details span {
+  display: inline-block;
+  padding: 15px;
   white-space: pre-wrap;
-  margin-top: 10px;
   font-size: 18px;
   line-height: 1.5;
 }
+
+summary {
+  font-weight: bold;
+  font-size: 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  user-select: none;
+  cursor: pointer;
+}
+
+

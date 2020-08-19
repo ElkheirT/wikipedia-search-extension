@@ -1,8 +1,6 @@
-
 async function getAPIResponse (url) {
     const response = await fetch(url)
-    const jsonResponse = await response.json()
-    return jsonResponse
+    return response
 }
 
 function getAPIURL (parameters) {
@@ -14,28 +12,26 @@ function getAPIURL (parameters) {
     return url
 }
 
-function sortResults (data) {
-    data.sort(function (a, b) {
-        return a.index.localeCompare(b.index)
-    })
-    return data
-}
-
 function getSearchResultsData (response) {
-    var pageIDs = response.query.pageids
-    var pages = response.query.pages
-    var searchData = {search: []}
-    for (var i = 0; i < pageIDs.length; i++) {
-        if(!pages[pageIDs[i]].hasOwnProperty('pageprops')) {
-            var currentPage = {
-                index: pages[pageIDs[i]].index,
-                title: pages[pageIDs[i]].title,
-                text: pages[pageIDs[i]].extract
-            }
-            searchData.search.push(currentPage)
-        }
+    if(!response.hasOwnProperty('query')) {
+        throw new Error('No search results');
     }
-    return searchData
+    else {
+        var pageIDs = response.query.pageids
+        var pages = response.query.pages
+        var searchData = {search: []}
+        for (var i = 0; i < pageIDs.length; i++) {
+            if(!pages[pageIDs[i]].hasOwnProperty('pageprops')) {
+                var currentPage = {
+                    index: pages[pageIDs[i]].index,
+                    title: pages[pageIDs[i]].title,
+                    text: pages[pageIDs[i]].extract.trim()
+                }
+                searchData.search.push(currentPage)
+            }
+        }
+        return searchData
+    }
 }
 
 function getSearchResults (searchTerm) {
@@ -44,16 +40,16 @@ function getSearchResults (searchTerm) {
         redirects: '1',
         format: 'json',
         generator: 'search',
-        gsrlimit: '10',
+        gsrlimit: '5',
         prop: 'extracts|pageprops',
         ppprop: 'disambiguation',
+        exlimit: 'max',
         exintro: '',
         explaintext: '',
-        exlimit: 'max',
         indexpageids: '',
-        gsrsearch: 'intitle:'
+        gsrsearch: ''
     }
-    searchParameters.gsrsearch += searchTerm
+    searchParameters.gsrsearch = searchTerm
     var url = getAPIURL(searchParameters)
     var response = getAPIResponse(url) 
     return response
