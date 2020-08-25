@@ -12,6 +12,8 @@ function getAPIURL (parameters) {
     return url
 }
 
+
+
 function getSearchResultsData (response) {
     if(!response.hasOwnProperty('query')) {
         throw new Error('No search results');
@@ -30,6 +32,9 @@ function getSearchResultsData (response) {
                 searchData.search.push(currentPage)
             }
         }
+        searchData.search.sort(function(a, b) {
+            return a.index - b.index
+        })
         return searchData
     }
 }

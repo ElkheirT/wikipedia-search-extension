@@ -54,7 +54,6 @@ function displaySearchResults (data, searchTerm) {
         <details>
             <summary>${item.title}</summary>
             <span>${item.text}</span>
-        </details>`)}
-`
+        </details>`)}`
     render(template, container)
 }
