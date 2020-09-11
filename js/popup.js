@@ -52,8 +52,8 @@ function displaySearchResults (data, searchTerm) {
         html`<h1>Search results for: \"${searchTerm}\"</h1>
         ${data.search.map((item) => html`
         <details>
-            <summary>${item.title}</summary>
-            <span>${item.text}</span>
+            <summary id="search-result-title">${item.title}</summary>
+            <span id="search-result-text">${item.text}</span>
         </details>`)}`
     render(template, container)
 }

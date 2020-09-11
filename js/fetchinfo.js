@@ -12,8 +12,6 @@ function getAPIURL (parameters) {
     return url
 }
 
-
-
 function getSearchResultsData (response) {
     if(!response.hasOwnProperty('query')) {
         throw new Error('No search results');

@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -9,23 +9,18 @@ main {
     width: 700px;
     height: 500px;
     background-color: white;
-    color: black;
-    margin: 20px;
-}
-  
-#main-heading {
-  font-size: 24px;
-  margin-bottom: 10px;
+    /* margin: 20px; */
 }
 
 #searchbar-container {
-  height: 50px;
   display: flex;
   align-items: center;
+  padding: 20px;
+  background-color: #57a0ff;
 }
 
 #searchbar {
-  height: 70%;
+  height: 30px;
   margin-right: 10px;
 }
 
@@ -35,21 +30,18 @@ main {
 }
 
 #search-btn {
-  height: 70%;
+  height: 30px;
   width: 75px;
   font-size: 16px;
 }
 
-details {
-  margin: 10px 0;
+#main-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-details span {
-  display: inline-block;
-  padding: 15px;
-  white-space: pre-wrap;
-  font-size: 18px;
-  line-height: 1.5;
+details {
+  margin: 10px 0;
 }
 
 summary {
@@ -60,4 +52,12 @@ summary {
   padding: 10px;
   user-select: none;
   cursor: pointer;
+}
+
+#search-result-text {
+  display: inline-block;
+  padding: 15px;
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
