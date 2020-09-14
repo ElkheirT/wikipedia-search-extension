@@ -25,7 +25,8 @@ function getSearchResultsData (response) {
                 var currentPage = {
                     index: pages[pageIDs[i]].index,
                     title: pages[pageIDs[i]].title,
-                    text: pages[pageIDs[i]].extract.trim()
+                    text: pages[pageIDs[i]].extract.trim(),
+                    id: pageIDs[i]
                 }
                 searchData.search.push(currentPage)
             }

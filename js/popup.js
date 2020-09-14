@@ -1,6 +1,4 @@
 import { getSearchResults, getSearchResultsData } from './fetchInfo.js'
-import {html, render} from '../node_modules/lit-html/lit-html.js'
-
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(tabs[0].id, { message: 'fetch' }, function (text) {
         getResponse(text.msg)
@@ -46,14 +44,21 @@ function displayError(error) {
     render(template, container)
 }
 
+
+
+/*
+<p onclick="openArticle()"></p>
+<a href="http://en.wikipedia.org/?curid=${item.id}">\tWikipedia Article</a></summary>
+*/
+
 function displaySearchResults (data, searchTerm) {
     var container = document.getElementById('main-content')
     var template = 
-        html`<h1>Search results for: \"${searchTerm}\"</h1>
-        ${data.search.map((item) => html`
+        `<h1>Search results for: \"${searchTerm}\"</h1>
+        ${data.search.map((item) => `
         <details>
             <summary id="search-result-title">${item.title}</summary>
             <span id="search-result-text">${item.text}</span>
-        </details>`)}`
-    render(template, container)
+        </details>`).join('')}`
+    container.innerHTML = template
 }

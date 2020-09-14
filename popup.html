@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/popup.css">
+    <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
   <main>
-    <div id="searchbar-container">
-      <input type="search" id="searchbar" placeholder="Search Wikipedia">
-      <button id="search-btn">Search</button>
+    <div id="wrapper">
+      <div id="searchbar-wrapper">
+        <button id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <input type="search" id="searchbar" placeholder="Search Wikipedia">
+      </div>
     </div>
-    <!-- <hr> -->
     <div id="main-content">
+    </div>
   </main>
 </body>
-  <script type="module" src="lit-html.js"></script>
   <script type="module" src="js/popup.js"></script>
   <script type="module" src="js/fetchinfo.js"></script>
 </html>
