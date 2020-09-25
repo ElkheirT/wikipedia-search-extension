@@ -47,7 +47,7 @@
 }
 
 details {
-  /* margin: 5px 0; */
+
   width: 600px;
 }
 
@@ -58,7 +58,16 @@ summary {
   padding: 10px;
   user-select: none;
   cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
+
+.articleBtn {
+  margin-left: auto;
+  padding: 5px;
+}
+
 
 #search-result-text {
   display: inline-block;

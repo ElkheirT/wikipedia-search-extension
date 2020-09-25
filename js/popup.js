@@ -7,6 +7,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
 var searchBtn = document.getElementById('search-btn')
 var searchInput = document.getElementById('searchbar')
+
 searchBtn.onclick = function() {
     var searchTerm = searchInput.value
     getResponse(searchTerm)
@@ -38,18 +39,10 @@ function handleResponse(response, searchTerm) {
 
 function displayError(error) {
     var container = document.getElementById('main-content')
-    var template = html`<h1>Error</h1>
-                        <p>${error}</p>
-                        `
-    render(template, container)
+    var template = `<h1>Error</h1>
+                    <p>${error}</p>`
+    container.innerHTML = template
 }
-
-
-
-/*
-<p onclick="openArticle()"></p>
-<a href="http://en.wikipedia.org/?curid=${item.id}">\tWikipedia Article</a></summary>
-*/
 
 function displaySearchResults (data, searchTerm) {
     var container = document.getElementById('main-content')
@@ -57,8 +50,22 @@ function displaySearchResults (data, searchTerm) {
         `<h1>Search results for: \"${searchTerm}\"</h1>
         ${data.search.map((item) => `
         <details>
-            <summary id="search-result-title">${item.title}</summary>
+            <summary id="search-result-title">${item.title}
+                <button class="articleBtn" id="${item.id}">View full article</button>
+            </summary>
             <span id="search-result-text">${item.text}</span>
         </details>`).join('')}`
     container.innerHTML = template
+    setButtonOnclick()
+}
+
+function setButtonOnclick() {
+    var viewArticleBtns = document.getElementsByClassName("articleBtn")
+    for(var i = 0; i < viewArticleBtns.length; i++) {
+        let pageID = viewArticleBtns[i].id
+        let wikiURL = `http://en.wikipedia.org/?curid=${pageID}`
+        viewArticleBtns[i].onclick = function() { 
+            chrome.tabs.create({url: wikiURL})
+        }
+    }
 }
