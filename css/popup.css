@@ -47,7 +47,6 @@
 }
 
 details {
-
   width: 600px;
 }
 
@@ -68,7 +67,6 @@ summary {
   padding: 5px;
 }
 
-
 #search-result-text {
   display: inline-block;
   padding: 15px;
@@ -84,3 +82,4 @@ summary {
 
 ::-webkit-scrollbar-thumb {
   background-color: rgb(38, 38, 38);
+}

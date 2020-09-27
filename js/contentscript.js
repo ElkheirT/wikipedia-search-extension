@@ -9,8 +9,8 @@ chrome.runtime.onMessage.addListener (
 
 function getUserInput() {
     var selectedText = getSelectedText();
-    var cleanInput = sanitizeInput(selectedText);
-    return cleanInput;
+    selectedText = selectedText.trim()
+    return selectedText;
 }
 
 function getSelectedText() {
@@ -19,9 +19,4 @@ function getSelectedText() {
         text = window.getSelection().toString();
     }
     return text;
-}
-
-function sanitizeInput(selectedText) {
-    selectedText = selectedText.trim();
-    return selectedText;
 }
