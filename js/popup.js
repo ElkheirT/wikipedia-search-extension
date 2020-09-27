@@ -68,4 +68,4 @@ function setButtonOnclick() {
             chrome.tabs.create({url: wikiURL})
         }
     }
-}
+} 
