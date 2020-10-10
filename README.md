@@ -11,8 +11,8 @@ A chrome extension that displays search results from Wikipedia according to a us
 ## Usage
 To search Wikipedia:
   1. Select text on the page
-  2. Use the key combination `alt-shift-p` to search Wikipedia according to the selected text
-  3. Click on one of the search results to read a short summary of that page or click the `View full article` button to read the Wikipedia page in a new tab.
+  2. Use the key combination `alt-shift-p` to search according to the selected text
+  3. Click on one of the search results to read a short summary of that page or click the `View full article` button to read the full Wikipedia page in a new tab.
 
 The search bar can also be used to manually search Wikipedia.
 
