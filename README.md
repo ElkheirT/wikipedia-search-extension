@@ -2,6 +2,7 @@
 <p align="center">
     <img src="https://raw.githubusercontent.com/ElkheirT/wikipedia-search-extension/master/assets/Screenshot.PNG"/>
 </p>
+
 [**Live Demo**](https://elkheirt.github.io/wikipedia-search-demo/)
 
 ## Description
