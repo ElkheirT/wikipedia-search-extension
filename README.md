@@ -6,7 +6,7 @@
 [**Live Demo**](https://elkheirt.github.io/wikipedia-search-demo/)
 
 ## Description
-A chrome extension that displays search results from Wikipedia according to a user's search term.
+A chrome extension that displays search results from Wikipedia according to a search term.
 
 ## Usage
 To search Wikipedia:
