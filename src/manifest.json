@@ -18,17 +18,16 @@
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+E",
-        "linux": "Ctrl+Shift+K",
-        "windows": "Alt+Shift+P",
-        "mac": "Alt+Shift+P"
+        "linux": "Ctrl+Shift+S",
+        "windows": "Alt+Shift+S",
+        "mac": "Alt+Shift+S"
       }
     }
   },
 
   "content_scripts": [
     {
-	  "matches": ["*://*/*"],
+	  "matches": ["<all_urls>"],
     "js": [
       "js/contentscript.js"
     ]
