@@ -1,6 +1,6 @@
 # Wikipedia search extension
 <p align="center">
-    <img src="https://raw.githubusercontent.com/ElkheirT/wikipedia-search-extension/master/assets/Screenshot.PNG"/>
+    <img src="screenshot.PNG"/>
 </p>
 
 [**Live Demo**](https://elkheirt.github.io/wikipedia-search-demo/)
