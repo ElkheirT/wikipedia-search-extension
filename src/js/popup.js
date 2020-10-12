@@ -1,7 +1,9 @@
 import { getSearchResults, getSearchResultsData } from './fetchInfo.js'
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(tabs[0].id, { message: 'fetch' }, function (text) {
-        getResponse(text.msg)
+        if (text != undefined) {
+            getResponse(text.msg)
+        }
     })
 })
 
@@ -68,4 +70,4 @@ function setButtonOnclick() {
             chrome.tabs.create({url: wikiURL})
         }
     }
-} 
+}

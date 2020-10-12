@@ -3,7 +3,10 @@ chrome.runtime.onMessage.addListener (
         if(request.message === "fetch") {
             let result = getUserInput();
             sendResponse({msg : result});
-        }   
+        }
+        else {
+            sendResponse({})
+        }
     }
 );
 
