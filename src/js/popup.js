@@ -1,4 +1,4 @@
-import { getSearchResults, getSearchResultsData } from './fetchInfo.js'
+import { getSearchResults, getSearchResultsData } from './fetchinfo.js'
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(tabs[0].id, { message: 'fetch' }, function (text) {
         if (text != undefined) {

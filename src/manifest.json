@@ -18,7 +18,7 @@
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
-        "linux": "Ctrl+Shift+S",
+        "linux": "Alt+Shift+S",
         "windows": "Alt+Shift+S",
         "mac": "Alt+Shift+S"
       }
