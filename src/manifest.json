@@ -3,7 +3,7 @@
   "name": "Wikipedia Search",
   "version": "1.0",
 
-  "description": "Wiki API Test",
+  "description": "View search results from Wikipedia",
   
   "permissions": [
     "activeTab"
